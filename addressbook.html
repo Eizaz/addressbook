@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="AddressBook">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+
+
+<body ng-controller="PeopleController">
+     <h1>Address Book</h1>
+     <div>
+     	<table class="table table-hover">
+     		<tr>
+     			<th>Name</th>
+     			<th>Phone</th>
+     			<th>City</th>
+     		</tr>
+     		
+     		<tr ng-repeat="person in people">
+     			<td>{{person.name}}</td>
+     			<td>{{person.phone}}</td>
+     			<td>{{person.city}}</td>
+     		</tr>
+     		
+
+     	</table>
+          
+
+          
+     		<div class="wrapper">
+   				<h2>Add a Contact</h2>
+   				Name: <input type="text" ng-model="newPerson.name"></input> 
+   				Phone: <input type="text" ng-model="newPerson.phone"></input>
+   				City: <input type="text" ng-model="newPerson.city"></input>
+         		<button ng-click="Save()">Save</button>
+   			</div>	
+    </div>
+<script>
+
+var app = angular.module("AddressBook", []);
+
+function PeopleController($scope) {
+     //"use strict";
+     $scope.people = [
+
+     {name:"Eizaz", phone: "01162046741", city:"Kuantan"}
+          
+     ];
+
+     $scope.Save=function(){
+		$scope.people.push({name:$scope.newPerson.name, phone:$scope.newPerson.phone, city:$scope.newPerson.city});
+	}
+}
+
+</script>
+</body>
+</html>
